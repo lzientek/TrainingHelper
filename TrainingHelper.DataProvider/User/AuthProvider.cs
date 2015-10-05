@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +6,7 @@ using TrainingHelper.Core.DbConnection;
 using TrainingHelper.Core.ModelConverter;
 using TrainingHelper.Models.User;
 
-namespace TrainingHelper.DataProvider.Auth
+namespace TrainingHelper.DataProvider.User
 {
     public class AuthProvider:IDisposable
     {
@@ -17,7 +16,7 @@ namespace TrainingHelper.DataProvider.Auth
             _db = new DatabaseEntities();
         }
 
-        public async Task<object> Connect(string pseudo, string password)
+        public async Task<ConnectionUser> Connect(string pseudo, string password)
         {
             password = EncryptPassword(password);
             var usr = _db.User.FirstOrDefault(u => u.Pseudo == pseudo && u.EncriptedPassword == password);

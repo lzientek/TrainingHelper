@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security.OAuth;
-using TrainingHelper.DataProvider.Auth;
+using TrainingHelper.DataProvider.User;
 
 namespace TrainingHelper.StandaloneApiServer.Helper.Auth
 {
@@ -32,14 +32,14 @@ namespace TrainingHelper.StandaloneApiServer.Helper.Auth
                     context.SetError("invalid_grant", "The user name or password is incorrect.");
                     return;
                 }
-            }
 
-            //permet d'avoir un token signé
-            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
-            identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-            context.Validated(identity);
+                //permet d'avoir un token signé
+                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+                identity.AddClaim(new Claim("sub", context.UserName));
+                identity.AddClaim(new Claim("roles",string.Join(";",user.Roles) ));
+                identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
+                context.Validated(identity);
+            }
 
         }
 

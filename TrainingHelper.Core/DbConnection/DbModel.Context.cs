@@ -27,5 +27,7 @@ namespace TrainingHelper.Core.DbConnection
     
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserInfo> UserInfo { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<UserInRole> UserInRole { get; set; }
     }
 }

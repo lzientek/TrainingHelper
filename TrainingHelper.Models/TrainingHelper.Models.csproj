@@ -39,6 +39,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\ConnectionUser.cs" />
+    <Compile Include="User\CreateUser.cs" />
+    <Compile Include="User\FullUser.cs" />
     <Compile Include="User\UserInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

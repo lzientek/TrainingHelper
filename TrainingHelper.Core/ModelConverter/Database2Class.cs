@@ -20,6 +20,23 @@ namespace TrainingHelper.Core.ModelConverter
                 LastConnection = user.LastConnection,
                 Id = user.Id,
                 LastName = user.LastName,
+                Roles = user.UserInRole?.Select(r=>r.Roles.Role),
+            };
+        }
+public static FullUser ToFullUser(this User user)
+        {
+            return new FullUser()
+            {
+                Pseudo = user.Pseudo,
+                BirthDate = user.BirthDate,
+                FirstName = user.FirstName,
+                LastConnection = user.LastConnection,
+                Id = user.Id,
+                LastName = user.LastName,
+                Roles = user.UserInRole?.Select(r=>r.Roles.Role),
+                LastModificationDate = user.LastModification,
+                CreationDate = user.CreationDate
+
             };
         }
     }

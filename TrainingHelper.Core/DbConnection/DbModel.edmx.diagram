@@ -8,6 +8,10 @@
         <EntityTypeShape EntityType="DatabaseModel.User" Width="1.5" PointX="0.75" PointY="1" />
         <EntityTypeShape EntityType="DatabaseModel.UserInfo" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="DatabaseModel.FK_UserInfo_ToUser" />
+        <EntityTypeShape EntityType="DatabaseModel.Roles" Width="1.5" PointX="0.875" PointY="7.25" />
+        <EntityTypeShape EntityType="DatabaseModel.UserInRole" Width="1.5" PointX="0.75" PointY="4.75" />
+        <AssociationConnector Association="DatabaseModel.FK_UserInRole_ToRole" />
+        <AssociationConnector Association="DatabaseModel.FK_UserInRole_ToUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

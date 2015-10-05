@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
@@ -31,6 +38,14 @@
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserInRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_UserInfo_ToUser">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
@@ -43,12 +58,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserInRole_ToRole">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="UserInRole" Type="Self.UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInRole_ToUser">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserInRole" Type="Self.UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInRole" EntityType="Self.UserInRole" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_UserInfo_ToUser" Association="Self.FK_UserInfo_ToUser">
             <End Role="User" EntitySet="User" />
             <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRole_ToRole" Association="Self.FK_UserInRole_ToRole">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserInRole" EntitySet="UserInRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRole_ToUser" Association="Self.FK_UserInRole_ToUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserInRole" EntitySet="UserInRole" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -61,6 +110,16 @@
           <AssociationSet Name="FK_UserInfo_ToUser" Association="DatabaseModel.FK_UserInfo_ToUser">
             <End Role="User" EntitySet="User" />
             <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="DatabaseModel.Roles" />
+          <EntitySet Name="UserInRole" EntityType="DatabaseModel.UserInRole" />
+          <AssociationSet Name="FK_UserInRole_ToRole" Association="DatabaseModel.FK_UserInRole_ToRole">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserInRole" EntitySet="UserInRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRole_ToUser" Association="DatabaseModel.FK_UserInRole_ToUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserInRole" EntitySet="UserInRole" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
@@ -77,6 +136,7 @@
           <Property Name="LastModification" Type="DateTime" Precision="3" />
           <NavigationProperty Name="UserInfo" Relationship="DatabaseModel.FK_UserInfo_ToUser" FromRole="User" ToRole="UserInfo" />
           <Property Name="Pseudo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserInRole" Relationship="DatabaseModel.FK_UserInRole_ToUser" FromRole="User" ToRole="UserInRole" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -99,6 +159,48 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserInRole" Relationship="DatabaseModel.FK_UserInRole_ToRole" FromRole="Roles" ToRole="UserInRole" />
+        </EntityType>
+        <EntityType Name="UserInRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="DatabaseModel.FK_UserInRole_ToRole" FromRole="UserInRole" ToRole="Roles" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK_UserInRole_ToUser" FromRole="UserInRole" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserInRole_ToRole">
+          <End Type="DatabaseModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="DatabaseModel.UserInRole" Role="UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInRole_ToUser">
+          <End Type="DatabaseModel.User" Role="User" Multiplicity="1" />
+          <End Type="DatabaseModel.UserInRole" Role="UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserInRole">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -133,6 +235,23 @@
                 <ScalarProperty Name="AveragePulse" ColumnName="AveragePulse" />
                 <ScalarProperty Name="Height" ColumnName="Height" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DatabaseModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInRole">
+            <EntityTypeMapping TypeName="DatabaseModel.UserInRole">
+              <MappingFragment StoreEntitySet="UserInRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
