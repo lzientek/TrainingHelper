@@ -37,7 +37,7 @@ namespace TrainingHelper.StandaloneApiServer.Helper.Auth
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
                 identity.AddClaim(new Claim("sub", context.UserName));
                 identity.AddClaim(new Claim("roles",string.Join(";",user.Roles) ));
-                identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
+                identity.AddClaim(new Claim(ClaimTypes.Name, context.ClientId));
                 context.Validated(identity);
             }
 

@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrainingHelper.Core.DbConnection;
 using TrainingHelper.Core.ModelConverter;
 using TrainingHelper.Models.User;
+using UserInfos = TrainingHelper.Models.User.UserInfos;
 
 namespace TrainingHelper.DataProvider.User
 {
@@ -17,6 +20,7 @@ namespace TrainingHelper.DataProvider.User
         {
             _db = new DatabaseEntities();
         }
+        #region create
 
         public async Task<FullUser> CreateUser(CreateUser user)
         {
@@ -35,11 +39,29 @@ namespace TrainingHelper.DataProvider.User
             int i = await  _db.SaveChangesAsync();
             return u.ToFullUser();
         }
+        #endregion
+
+
+        #region Get
+
+        public async Task<IEnumerable<UserInfos>> GetUserInfos(int userId)
+        {
+            var user= await _db.User.FindAsync(userId);
+            return user?.UserInfo.ToUserInfos();
+        }
+
+        #endregion
 
 
         public void Dispose()
         {
             _db.Dispose();
+        }
+
+
+        public async Task<IEnumerable<SmallUser>> GetUsers()
+        {
+            return await _db.User.Select(u => new SmallUser {Id = u.Id, Pseudo = u.Pseudo}).ToListAsync();
         }
     }
 }

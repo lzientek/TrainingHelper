@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace TrainingHelper.Models.User
 {
-    public class UserInfo
+    public class SmallUser
     {
+        public string Pseudo { get; set; }
+        public int Id { get; set; }
     }
 }

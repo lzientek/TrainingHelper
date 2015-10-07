@@ -40,8 +40,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\ConnectionUser.cs" />
     <Compile Include="User\CreateUser.cs" />
+    <Compile Include="User\SmallUser.cs" />
     <Compile Include="User\FullUser.cs" />
-    <Compile Include="User\UserInfo.cs" />
+    <Compile Include="User\UserInfos.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

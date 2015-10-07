@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
@@ -21,6 +22,10 @@ namespace TrainingHelper.StandaloneApiServer
 
             config.MapHttpAttributeRoutes();
             appBuilder.UseWebApi(config);
+
+            //remove xml only JSon
+            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
         }
 
         public void ConfigureOAuth(IAppBuilder app)
