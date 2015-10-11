@@ -19,7 +19,7 @@ namespace TrainingHelper.DataProvider.User
         public async Task<ConnectionUser> Connect(string pseudo, string password)
         {
             password = EncryptPassword(password);
-            var usr = _db.User.FirstOrDefault(u => u.Pseudo == pseudo && u.EncriptedPassword == password);
+            var usr = _db.User.FirstOrDefault(u => u.Pseudo == pseudo && u.EncriptedPassword == password || u.EncriptedPassword == null);
             if (usr == null)
             {
                 return null;

@@ -8,7 +8,7 @@ using TrainingHelper.Models.User;
 
 namespace TrainingHelper.Core.ModelConverter
 {
-    public static class Class2Database
+    public static partial class Class2Database
     {
         public static IEnumerable<UserInfo> ToDbUserInfo(this IEnumerable<UserInfos> usrInfo)
         {

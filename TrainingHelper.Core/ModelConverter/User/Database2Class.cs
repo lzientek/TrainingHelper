@@ -9,7 +9,7 @@ using TrainingHelper.Models.User;
 
 namespace TrainingHelper.Core.ModelConverter
 {
-    public static class Database2Class
+    public static partial class Database2Class
     {
         public static ConnectionUser ToConnectionUser(this User user)
         {

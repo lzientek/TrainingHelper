@@ -1,0 +1,22 @@
+﻿<Page x:Class="TrainingHelper.PcClient.Views.User.ConnectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrainingHelper.PcClient.Views.User"
+      mc:Ignorable="d" 
+      DataContext="{Binding Path=Connection,Source={StaticResource Locator}}"
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="ConnectionPage">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Pseudo"></TextBlock>
+            <TextBox Text="{Binding Pseudo}" />
+            <TextBlock Text="Password (optionnal)"></TextBlock>
+            <PasswordBox Name="PasswordBox" />
+            <Button Click="Login">Login</Button>
+            <ProgressBar Name="ProgressBar" IsIndeterminate="True" Visibility="Hidden" Height="3" />
+        </StackPanel>
+    </Grid>
+</Page>

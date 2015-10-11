@@ -63,5 +63,11 @@ namespace TrainingHelper.DataProvider.User
         {
             return await _db.User.Select(u => new SmallUser {Id = u.Id, Pseudo = u.Pseudo}).ToListAsync();
         }
+
+        public async Task<FullUser> GetUser(int userId)
+        {
+            var user = await _db.User.FindAsync(userId);
+            return user?.ToFullUser();
+        }
     }
 }

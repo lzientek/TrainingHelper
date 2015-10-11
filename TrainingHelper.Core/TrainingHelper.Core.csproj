@@ -81,7 +81,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DbConnection\MadeExerciseFromProgram.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbConnection\MadeExercises.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbConnection\MadeSeries.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DbConnection\Roles.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbConnection\TrainingExercise.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbConnection\TrainingProgram.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbConnection\TrainingProgramToExercise.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DbConnection\User.cs">
@@ -93,8 +111,11 @@
     <Compile Include="DbConnection\UserInRole.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelConverter\Class2Database.cs" />
-    <Compile Include="ModelConverter\Database2Class.cs" />
+    <Compile Include="DbConnection\UserToProgram.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelConverter\User\Class2Database.cs" />
+    <Compile Include="ModelConverter\User\Database2Class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

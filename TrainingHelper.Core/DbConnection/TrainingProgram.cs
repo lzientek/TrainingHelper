@@ -12,33 +12,24 @@ namespace TrainingHelper.Core.DbConnection
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class TrainingProgram
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public TrainingProgram()
         {
-            this.UserInfo = new HashSet<UserInfo>();
-            this.UserInRole = new HashSet<UserInRole>();
-            this.MadeExercises = new HashSet<MadeExercises>();
+            this.TrainingProgramToExercise = new HashSet<TrainingProgramToExercise>();
             this.UserToProgram = new HashSet<UserToProgram>();
         }
     
         public int Id { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public Nullable<System.DateTime> BirthDate { get; set; }
-        public string EncriptedPassword { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Nullable<int> Difficulty { get; set; }
         public System.DateTime CreationDate { get; set; }
-        public System.DateTime LastConnection { get; set; }
-        public Nullable<System.DateTime> LastModification { get; set; }
-        public string Pseudo { get; set; }
+        public Nullable<System.DateTime> ModificationDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserInfo> UserInfo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserInRole> UserInRole { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MadeExercises> MadeExercises { get; set; }
+        public virtual ICollection<TrainingProgramToExercise> TrainingProgramToExercise { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserToProgram> UserToProgram { get; set; }
     }
