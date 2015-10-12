@@ -13,21 +13,21 @@
         <AssociationConnector Association="DatabaseModel.FK_UserInRole_ToRole" />
         <AssociationConnector Association="DatabaseModel.FK_UserInRole_ToUser" />
         <EntityTypeShape EntityType="DatabaseModel.TrainingProgram" Width="1.5" PointX="7.625" PointY="0.5" />
-        <EntityTypeShape EntityType="DatabaseModel.TrainingProgramToExercise" Width="1.5" PointX="10.125" PointY="0.5" />
-        <AssociationConnector Association="DatabaseModel.FK_TrainingProgramToExercise_ToProgram" />
         <EntityTypeShape EntityType="DatabaseModel.MadeExerciseFromProgram" Width="1.5" PointX="7.5" PointY="5.125" />
         <EntityTypeShape EntityType="DatabaseModel.MadeExercises" Width="1.5" PointX="3" PointY="4.875" />
         <EntityTypeShape EntityType="DatabaseModel.MadeSeries" Width="1.5" PointX="5.375" PointY="4.875" />
         <EntityTypeShape EntityType="DatabaseModel.TrainingExercise" Width="1.5" PointX="3.125" PointY="8.375" />
         <EntityTypeShape EntityType="DatabaseModel.UserToProgram" Width="1.5" PointX="5.375" PointY="0.5" />
-        <AssociationConnector Association="DatabaseModel.FK_MadeExerciseFromProgram_ToExerciseFromProgram" />
         <AssociationConnector Association="DatabaseModel.FK_MadeSeries_ToMadeExerciseFromProgram" />
         <AssociationConnector Association="DatabaseModel.FK_MadeExercises_ToExercice" />
         <AssociationConnector Association="DatabaseModel.FK_MadeExercises_ToUser" />
         <AssociationConnector Association="DatabaseModel.FK_MadeSeries_ToMadeExercise" />
         <AssociationConnector Association="DatabaseModel.FK_UserToProgram_ToProgram" />
         <AssociationConnector Association="DatabaseModel.FK_UserToProgram_ToUser" />
+        <EntityTypeShape EntityType="DatabaseModel.TrainingProgramToExercise" Width="1.5" PointX="9.875" PointY="4" />
+        <AssociationConnector Association="DatabaseModel.FK_MadeExerciseFromProgram_ToExerciseFromProgram" />
         <AssociationConnector Association="DatabaseModel.FK_TrainingProgramToExercise_ToExercise" />
+        <AssociationConnector Association="DatabaseModel.FK_TrainingProgramToExercise_ToProgram" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

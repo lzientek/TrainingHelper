@@ -74,7 +74,9 @@
           <Property Name="ExerciseId" Type="int" Nullable="false" />
           <Property Name="SerieObjective" Type="int" />
           <Property Name="RepetitionObjetive" Type="int" />
-          <Property Name="TimeObjetive" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="TimeBetweenSeries" Type="time" Precision="7" />
+          <Property Name="TimeAfterSeries" Type="time" Precision="7" />
+          <Property Name="TimeObjetive" Type="time" Precision="7" />
           <Property Name="AdditionalInfo" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="User">
@@ -349,20 +351,11 @@
             <End Role="UserInRole" EntitySet="UserInRole" />
           </AssociationSet>
           <EntitySet Name="TrainingProgram" EntityType="DatabaseModel.TrainingProgram" />
-          <EntitySet Name="TrainingProgramToExercise" EntityType="DatabaseModel.TrainingProgramToExercise" />
-          <AssociationSet Name="FK_TrainingProgramToExercise_ToProgram" Association="DatabaseModel.FK_TrainingProgramToExercise_ToProgram">
-            <End Role="TrainingProgram" EntitySet="TrainingProgram" />
-            <End Role="TrainingProgramToExercise" EntitySet="TrainingProgramToExercise" />
-          </AssociationSet>
           <EntitySet Name="MadeExerciseFromProgram" EntityType="DatabaseModel.MadeExerciseFromProgram" />
           <EntitySet Name="MadeExercises" EntityType="DatabaseModel.MadeExercises" />
           <EntitySet Name="MadeSeries" EntityType="DatabaseModel.MadeSeries" />
           <EntitySet Name="TrainingExercise" EntityType="DatabaseModel.TrainingExercise" />
           <EntitySet Name="UserToProgram" EntityType="DatabaseModel.UserToProgram" />
-          <AssociationSet Name="FK_MadeExerciseFromProgram_ToExerciseFromProgram" Association="DatabaseModel.FK_MadeExerciseFromProgram_ToExerciseFromProgram">
-            <End Role="TrainingProgramToExercise" EntitySet="TrainingProgramToExercise" />
-            <End Role="MadeExerciseFromProgram" EntitySet="MadeExerciseFromProgram" />
-          </AssociationSet>
           <AssociationSet Name="FK_MadeSeries_ToMadeExerciseFromProgram" Association="DatabaseModel.FK_MadeSeries_ToMadeExerciseFromProgram">
             <End Role="MadeExerciseFromProgram" EntitySet="MadeExerciseFromProgram" />
             <End Role="MadeSeries" EntitySet="MadeSeries" />
@@ -387,8 +380,17 @@
             <End Role="User" EntitySet="User" />
             <End Role="UserToProgram" EntitySet="UserToProgram" />
           </AssociationSet>
+          <EntitySet Name="TrainingProgramToExercise" EntityType="DatabaseModel.TrainingProgramToExercise" />
+          <AssociationSet Name="FK_MadeExerciseFromProgram_ToExerciseFromProgram" Association="DatabaseModel.FK_MadeExerciseFromProgram_ToExerciseFromProgram">
+            <End Role="TrainingProgramToExercise" EntitySet="TrainingProgramToExercise" />
+            <End Role="MadeExerciseFromProgram" EntitySet="MadeExerciseFromProgram" />
+          </AssociationSet>
           <AssociationSet Name="FK_TrainingProgramToExercise_ToExercise" Association="DatabaseModel.FK_TrainingProgramToExercise_ToExercise">
             <End Role="TrainingExercise" EntitySet="TrainingExercise" />
+            <End Role="TrainingProgramToExercise" EntitySet="TrainingProgramToExercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingProgramToExercise_ToProgram" Association="DatabaseModel.FK_TrainingProgramToExercise_ToProgram">
+            <End Role="TrainingProgram" EntitySet="TrainingProgram" />
             <End Role="TrainingProgramToExercise" EntitySet="TrainingProgramToExercise" />
           </AssociationSet>
         </EntityContainer>
@@ -487,36 +489,9 @@
           <Property Name="Difficulty" Type="Int32" />
           <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModificationDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TrainingProgramToExercise" Relationship="DatabaseModel.FK_TrainingProgramToExercise_ToProgram" FromRole="TrainingProgram" ToRole="TrainingProgramToExercise" />
           <NavigationProperty Name="UserToProgram" Relationship="DatabaseModel.FK_UserToProgram_ToProgram" FromRole="TrainingProgram" ToRole="UserToProgram" />
+          <NavigationProperty Name="TrainingProgramToExercise" Relationship="DatabaseModel.FK_TrainingProgramToExercise_ToProgram" FromRole="TrainingProgram" ToRole="TrainingProgramToExercise" />
         </EntityType>
-        <EntityType Name="TrainingProgramToExercise">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProgramId" Type="Int32" Nullable="false" />
-          <Property Name="ExerciseId" Type="Int32" Nullable="false" />
-          <Property Name="SerieObjective" Type="Int32" />
-          <Property Name="RepetitionObjetive" Type="Int32" />
-          <Property Name="AdditionalInfo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TrainingProgram" Relationship="DatabaseModel.FK_TrainingProgramToExercise_ToProgram" FromRole="TrainingProgramToExercise" ToRole="TrainingProgram" />
-          <NavigationProperty Name="MadeExerciseFromProgram" Relationship="DatabaseModel.FK_MadeExerciseFromProgram_ToExerciseFromProgram" FromRole="TrainingProgramToExercise" ToRole="MadeExerciseFromProgram" />
-          <NavigationProperty Name="TrainingExercise" Relationship="DatabaseModel.FK_TrainingProgramToExercise_ToExercise" FromRole="TrainingProgramToExercise" ToRole="TrainingExercise" />
-          <Property Name="TimeObjetive" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-        </EntityType>
-        <Association Name="FK_TrainingProgramToExercise_ToProgram">
-          <End Type="DatabaseModel.TrainingProgram" Role="TrainingProgram" Multiplicity="1" />
-          <End Type="DatabaseModel.TrainingProgramToExercise" Role="TrainingProgramToExercise" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TrainingProgram">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TrainingProgramToExercise">
-              <PropertyRef Name="ProgramId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="MadeExerciseFromProgram">
           <Key>
             <PropertyRef Name="Id" />
@@ -525,8 +500,8 @@
           <Property Name="ExerciceToProgramId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="AdditionalInfos" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TrainingProgramToExercise" Relationship="DatabaseModel.FK_MadeExerciseFromProgram_ToExerciseFromProgram" FromRole="MadeExerciseFromProgram" ToRole="TrainingProgramToExercise" />
           <NavigationProperty Name="MadeSeries" Relationship="DatabaseModel.FK_MadeSeries_ToMadeExerciseFromProgram" FromRole="MadeExerciseFromProgram" ToRole="MadeSeries" />
+          <NavigationProperty Name="TrainingProgramToExercise" Relationship="DatabaseModel.FK_MadeExerciseFromProgram_ToExerciseFromProgram" FromRole="MadeExerciseFromProgram" ToRole="TrainingProgramToExercise" />
         </EntityType>
         <EntityType Name="MadeExercises">
           <Key>
@@ -581,18 +556,6 @@
           <NavigationProperty Name="TrainingProgram" Relationship="DatabaseModel.FK_UserToProgram_ToProgram" FromRole="UserToProgram" ToRole="TrainingProgram" />
           <NavigationProperty Name="User" Relationship="DatabaseModel.FK_UserToProgram_ToUser" FromRole="UserToProgram" ToRole="User" />
         </EntityType>
-        <Association Name="FK_MadeExerciseFromProgram_ToExerciseFromProgram">
-          <End Type="DatabaseModel.TrainingProgramToExercise" Role="TrainingProgramToExercise" Multiplicity="1" />
-          <End Type="DatabaseModel.MadeExerciseFromProgram" Role="MadeExerciseFromProgram" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TrainingProgramToExercise">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MadeExerciseFromProgram">
-              <PropertyRef Name="ExerciceToProgramId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MadeSeries_ToMadeExerciseFromProgram">
           <End Type="DatabaseModel.MadeExerciseFromProgram" Role="MadeExerciseFromProgram" Multiplicity="0..1" />
           <End Type="DatabaseModel.MadeSeries" Role="MadeSeries" Multiplicity="*" />
@@ -665,6 +628,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TrainingProgramToExercise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <Property Name="ExerciseId" Type="Int32" Nullable="false" />
+          <Property Name="SerieObjective" Type="Int32" />
+          <Property Name="RepetitionObjetive" Type="Int32" />
+          <Property Name="TimeBetweenSeries" Type="Time" Precision="7" />
+          <Property Name="TimeAfterSeries" Type="Time" Precision="7" />
+          <Property Name="TimeObjetive" Type="Time" Precision="7" />
+          <Property Name="AdditionalInfo" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MadeExerciseFromProgram" Relationship="DatabaseModel.FK_MadeExerciseFromProgram_ToExerciseFromProgram" FromRole="TrainingProgramToExercise" ToRole="MadeExerciseFromProgram" />
+          <NavigationProperty Name="TrainingExercise" Relationship="DatabaseModel.FK_TrainingProgramToExercise_ToExercise" FromRole="TrainingProgramToExercise" ToRole="TrainingExercise" />
+          <NavigationProperty Name="TrainingProgram" Relationship="DatabaseModel.FK_TrainingProgramToExercise_ToProgram" FromRole="TrainingProgramToExercise" ToRole="TrainingProgram" />
+        </EntityType>
+        <Association Name="FK_MadeExerciseFromProgram_ToExerciseFromProgram">
+          <End Type="DatabaseModel.TrainingProgramToExercise" Role="TrainingProgramToExercise" Multiplicity="1" />
+          <End Type="DatabaseModel.MadeExerciseFromProgram" Role="MadeExerciseFromProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingProgramToExercise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MadeExerciseFromProgram">
+              <PropertyRef Name="ExerciceToProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TrainingProgramToExercise_ToExercise">
           <End Type="DatabaseModel.TrainingExercise" Role="TrainingExercise" Multiplicity="1" />
           <End Type="DatabaseModel.TrainingProgramToExercise" Role="TrainingProgramToExercise" Multiplicity="*" />
@@ -674,6 +666,18 @@
             </Principal>
             <Dependent Role="TrainingProgramToExercise">
               <PropertyRef Name="ExerciseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingProgramToExercise_ToProgram">
+          <End Type="DatabaseModel.TrainingProgram" Role="TrainingProgram" Multiplicity="1" />
+          <End Type="DatabaseModel.TrainingProgramToExercise" Role="TrainingProgramToExercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingProgram">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingProgramToExercise">
+              <PropertyRef Name="ProgramId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -740,19 +744,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TrainingProgramToExercise">
-            <EntityTypeMapping TypeName="DatabaseModel.TrainingProgramToExercise">
-              <MappingFragment StoreEntitySet="TrainingProgramToExercise">
-                <ScalarProperty Name="TimeObjetive" ColumnName="TimeObjetive" />
-                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
-                <ScalarProperty Name="RepetitionObjetive" ColumnName="RepetitionObjetive" />
-                <ScalarProperty Name="SerieObjective" ColumnName="SerieObjective" />
-                <ScalarProperty Name="ExerciseId" ColumnName="ExerciseId" />
-                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MadeExerciseFromProgram">
             <EntityTypeMapping TypeName="DatabaseModel.MadeExerciseFromProgram">
               <MappingFragment StoreEntitySet="MadeExerciseFromProgram">
@@ -807,6 +798,21 @@
                 <ScalarProperty Name="AddDate" ColumnName="AddDate" />
                 <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainingProgramToExercise">
+            <EntityTypeMapping TypeName="DatabaseModel.TrainingProgramToExercise">
+              <MappingFragment StoreEntitySet="TrainingProgramToExercise">
+                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+                <ScalarProperty Name="TimeObjetive" ColumnName="TimeObjetive" />
+                <ScalarProperty Name="TimeAfterSeries" ColumnName="TimeAfterSeries" />
+                <ScalarProperty Name="TimeBetweenSeries" ColumnName="TimeBetweenSeries" />
+                <ScalarProperty Name="RepetitionObjetive" ColumnName="RepetitionObjetive" />
+                <ScalarProperty Name="SerieObjective" ColumnName="SerieObjective" />
+                <ScalarProperty Name="ExerciseId" ColumnName="ExerciseId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -25,12 +25,14 @@ namespace TrainingHelper.Core.DbConnection
         public int ExerciseId { get; set; }
         public Nullable<int> SerieObjective { get; set; }
         public Nullable<int> RepetitionObjetive { get; set; }
+        public Nullable<System.TimeSpan> TimeBetweenSeries { get; set; }
+        public Nullable<System.TimeSpan> TimeAfterSeries { get; set; }
+        public Nullable<System.TimeSpan> TimeObjetive { get; set; }
         public string AdditionalInfo { get; set; }
-        public byte[] TimeObjetive { get; set; }
     
-        public virtual TrainingProgram TrainingProgram { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MadeExerciseFromProgram> MadeExerciseFromProgram { get; set; }
         public virtual TrainingExercise TrainingExercise { get; set; }
+        public virtual TrainingProgram TrainingProgram { get; set; }
     }
 }

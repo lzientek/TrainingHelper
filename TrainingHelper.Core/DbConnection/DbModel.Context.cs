@@ -30,11 +30,11 @@ namespace TrainingHelper.Core.DbConnection
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<UserInRole> UserInRole { get; set; }
         public virtual DbSet<TrainingProgram> TrainingProgram { get; set; }
-        public virtual DbSet<TrainingProgramToExercise> TrainingProgramToExercise { get; set; }
         public virtual DbSet<MadeExerciseFromProgram> MadeExerciseFromProgram { get; set; }
         public virtual DbSet<MadeExercises> MadeExercises { get; set; }
         public virtual DbSet<MadeSeries> MadeSeries { get; set; }
         public virtual DbSet<TrainingExercise> TrainingExercise { get; set; }
         public virtual DbSet<UserToProgram> UserToProgram { get; set; }
+        public virtual DbSet<TrainingProgramToExercise> TrainingProgramToExercise { get; set; }
     }
 }

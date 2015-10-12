@@ -17,8 +17,8 @@ namespace TrainingHelper.Core.DbConnection
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TrainingProgram()
         {
-            this.TrainingProgramToExercise = new HashSet<TrainingProgramToExercise>();
             this.UserToProgram = new HashSet<UserToProgram>();
+            this.TrainingProgramToExercise = new HashSet<TrainingProgramToExercise>();
         }
     
         public int Id { get; set; }
@@ -29,8 +29,8 @@ namespace TrainingHelper.Core.DbConnection
         public Nullable<System.DateTime> ModificationDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TrainingProgramToExercise> TrainingProgramToExercise { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserToProgram> UserToProgram { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TrainingProgramToExercise> TrainingProgramToExercise { get; set; }
     }
 }

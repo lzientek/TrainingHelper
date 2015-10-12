@@ -25,8 +25,8 @@ namespace TrainingHelper.Core.DbConnection
         public System.DateTime Date { get; set; }
         public string AdditionalInfos { get; set; }
     
-        public virtual TrainingProgramToExercise TrainingProgramToExercise { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MadeSeries> MadeSeries { get; set; }
+        public virtual TrainingProgramToExercise TrainingProgramToExercise { get; set; }
     }
 }
