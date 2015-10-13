@@ -36,7 +36,8 @@ namespace TrainingHelper.Core.ModelConverter
                 LastName = user.LastName,
                 Roles = user.UserInRole?.Select(r => r.Roles.Role),
                 LastModificationDate = user.LastModification,
-                CreationDate = user.CreationDate
+                CreationDate = user.CreationDate,
+                 PhotoPath = user.PhotoPath,
 
             };
         }

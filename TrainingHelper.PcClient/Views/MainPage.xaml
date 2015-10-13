@@ -4,19 +4,66 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TrainingHelper.PcClient.Views"
+      xmlns:user="clr-namespace:TrainingHelper.PcClient.Views.User"
+      xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+      xmlns:model="clr-namespace:TrainingHelper.PcClient.Model"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       DataContext="{Binding Source={StaticResource Locator},Path=Main}">
 
     <Grid>
-        <StackPanel>
-            <TextBlock Text="{Binding Path=ConnectedUser.Pseudo}"></TextBlock>
-            <TextBlock Text="{Binding Path=ConnectedUser.BirthDate}"></TextBlock>
-            <TextBlock Text="{Binding Path=ConnectedUser.LastName}"></TextBlock>
-            <TextBlock Text="{Binding Path=ConnectedUser.FirstName}"></TextBlock>
-            <TextBlock Text="{Binding Path=ConnectedUser.Id}"></TextBlock>
-            <TextBlock Text="{Binding Path=ConnectedUser.LastConnection}"></TextBlock>
-            <TextBlock Text="{Binding Path=ConnectedUser.CreationDate}"></TextBlock>
-        </StackPanel>
+
+
+        <wpf:DialogHost Identifier="RootDialog">
+            <wpf:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+                <wpf:DrawerHost.LeftDrawerContent>
+                    <StackPanel Orientation="Vertical">
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                                  HorizontalAlignment="Right" Margin="16"
+                                  IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                        <ListBox x:Name="HamMenuItemsListBox" Margin="0 16 0 16" SelectedIndex="0"                         
+                             PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseLeftButtonUp">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate DataType="model:HamMenuItem">
+                                    <TextBlock Text="{Binding Title}" Margin="32 0 32 0" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                            <model:HamMenuItem Title="Start Training">
+                                <model:HamMenuItem.Content>
+                                    <user:FullUserUserControl/>
+                                </model:HamMenuItem.Content>
+                            </model:HamMenuItem>
+                            <model:HamMenuItem Title="Statistics">
+                                <model:HamMenuItem.Content>
+                                    <user:FullUserUserControl/>
+                                </model:HamMenuItem.Content>
+                            </model:HamMenuItem>
+                            <model:HamMenuItem Title="Data">
+                                <model:HamMenuItem.Content>
+                                    <user:FullUserUserControl/>
+                                </model:HamMenuItem.Content>
+                            </model:HamMenuItem>
+                        </ListBox>
+                    </StackPanel>
+                </wpf:DrawerHost.LeftDrawerContent>
+
+                <DockPanel>
+                    <wpf:ColorZone Padding="16" wpf:ShadowAssist.ShadowDepth="Depth2"
+                               Mode="PrimaryMid" DockPanel.Dock="Top">
+                        <DockPanel>
+                            <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                                      x:Name="MenuToggleButton"/>
+                            <TextBlock FontSize="22"  HorizontalAlignment="Left" VerticalAlignment="Center"
+                                       Text="{Binding ElementName=HamMenuItemsListBox, Path=SelectedItem.Title}" Margin="25,0,0,0" />
+                            <TextBlock FontSize="18" HorizontalAlignment="Right" VerticalAlignment="Center"  Text="{Binding Path=Now,StringFormat='HH:mm:ss'}" />
+                        </DockPanel>
+                    </wpf:ColorZone>
+
+                    <ContentControl Margin="16" Content="{Binding ElementName=HamMenuItemsListBox, Path=SelectedItem.Content}" />
+                </DockPanel>
+            </wpf:DrawerHost>
+        </wpf:DialogHost>
+
     </Grid>
 </Page>

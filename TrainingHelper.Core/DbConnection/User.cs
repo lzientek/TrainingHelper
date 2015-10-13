@@ -32,6 +32,7 @@ namespace TrainingHelper.Core.DbConnection
         public System.DateTime LastConnection { get; set; }
         public Nullable<System.DateTime> LastModification { get; set; }
         public string Pseudo { get; set; }
+        public string PhotoPath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserInfo> UserInfo { get; set; }

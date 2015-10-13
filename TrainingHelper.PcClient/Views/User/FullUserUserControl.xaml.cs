@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TrainingHelper.PcClient.Views
+namespace TrainingHelper.PcClient.Views.User
 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for FullUserUserControl.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class FullUserUserControl : UserControl
     {
-        public MainPage()
+        public FullUserUserControl()
         {
             InitializeComponent();
-        }
-
-        private void UIElement_OnPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            MenuToggleButton.IsChecked = false;
         }
     }
 }

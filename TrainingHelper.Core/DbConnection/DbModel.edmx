@@ -92,6 +92,7 @@
           <Property Name="CreationDate" Type="datetime" Nullable="false" />
           <Property Name="LastConnection" Type="datetime" Nullable="false" />
           <Property Name="LastModification" Type="datetime" />
+          <Property Name="PhotoPath" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -411,6 +412,7 @@
           <NavigationProperty Name="UserInRole" Relationship="DatabaseModel.FK_UserInRole_ToUser" FromRole="User" ToRole="UserInRole" />
           <NavigationProperty Name="MadeExercises" Relationship="DatabaseModel.FK_MadeExercises_ToUser" FromRole="User" ToRole="MadeExercises" />
           <NavigationProperty Name="UserToProgram" Relationship="DatabaseModel.FK_UserToProgram_ToUser" FromRole="User" ToRole="UserToProgram" />
+          <Property Name="PhotoPath" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UserInfo">
           <Key>
@@ -690,6 +692,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="DatabaseModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
                 <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
                 <ScalarProperty Name="LastModification" ColumnName="LastModification" />
                 <ScalarProperty Name="LastConnection" ColumnName="LastConnection" />

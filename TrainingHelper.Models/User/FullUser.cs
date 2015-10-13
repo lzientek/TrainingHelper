@@ -17,5 +17,6 @@ namespace TrainingHelper.Models.User
         public IEnumerable<string> Roles { get; set; }
         public DateTime? LastModificationDate { get; set; }
         public DateTime CreationDate { get; set; }
+        public string PhotoPath { get; set; }
     }
 }
