@@ -30,14 +30,11 @@ namespace TrainingHelper.PcClient.ViewModel
             timer.Start();
         }
 
-        public DateTime Now
-        {
-            get { return DateTime.Now; }
-        }
+        public DateTime Now => DateTime.Now;
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            RaisePropertyChanged("Now");
+            RaisePropertyChanged(nameof(Now));
         }
 
         public void UserConnection(FullUser obj)

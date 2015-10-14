@@ -23,12 +23,16 @@ namespace TrainingHelper.PcClient.Views.User
         public ConnectionPage()
         {
             InitializeComponent();
+#if DEBUG
+            App.ViewModelLocator.Connection.Pseudo = "lucas";
+            Login(null, null);
+#endif
         }
 
         private async void Login(object sender, RoutedEventArgs e)
         {
             ProgressBar.Visibility = Visibility.Visible;
-          var result =  await App.ViewModelLocator.Connection.ConnectUser(PasswordBox.Password);
+            var result = await App.ViewModelLocator.Connection.ConnectUser(PasswordBox.Password);
             ProgressBar.Visibility = Visibility.Hidden;
             ApplicationHelper.NavigationService.Navigate(new Uri("/Views/MainPage.xaml", UriKind.Relative));
         }

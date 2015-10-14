@@ -37,7 +37,7 @@ namespace TrainingHelper.Core.ModelConverter
                 Roles = user.UserInRole?.Select(r => r.Roles.Role),
                 LastModificationDate = user.LastModification,
                 CreationDate = user.CreationDate,
-                 PhotoPath = user.PhotoPath,
+                PhotoPath = user.PhotoPath,
 
             };
         }
@@ -47,7 +47,7 @@ namespace TrainingHelper.Core.ModelConverter
             return usrInfo.Select(info => new UserInfos()
             {
                 CreationDate = info.CreationDate,
-                AveragePulse= info.AveragePulse,
+                AveragePulse = info.AveragePulse,
                 Id = info.Id,
                 UserId = info.UserId,
                 Feeling = info.Feeling,

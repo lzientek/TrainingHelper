@@ -1,19 +1,19 @@
 ﻿<Application x:Class="TrainingHelper.PcClient.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:TrainingHelper.PcClient" StartupUri="MainWindow.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:viewModel="clr-namespace:TrainingHelper.PcClient.ViewModel">
+             xmlns:viewModel="clr-namespace:TrainingHelper.PcClient.ViewModel"
+             xmlns:converter="clr-namespace:TrainingHelper.PcClient.Common.Converter">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- Material -->
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml">
-                </ResourceDictionary>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml">
-                </ResourceDictionary>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml">
-                </ResourceDictionary>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Deeporange.xaml">
-                </ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Deeporange.xaml" />
+                
             </ResourceDictionary.MergedDictionaries>
             <viewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True"  />
+            <converter:PathToImageConverter x:Key="PathToImage"/>
+            <converter:BorderToRoundConverter x:Key="BorderToRound"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

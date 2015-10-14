@@ -4,19 +4,51 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TrainingHelper.PcClient.Views.User"
+      xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+      xmlns:validationRules="clr-namespace:TrainingHelper.PcClient.Common.ValidationRules"
       mc:Ignorable="d" 
       DataContext="{Binding Path=Connection,Source={StaticResource Locator}}"
       d:DesignHeight="300" d:DesignWidth="300"
       Title="ConnectionPage">
 
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Pseudo"></TextBlock>
-            <TextBox Text="{Binding Pseudo}" />
-            <TextBlock Text="Password (optionnal)"></TextBlock>
-            <PasswordBox Name="PasswordBox" />
-            <Button Click="Login">Login</Button>
-            <ProgressBar Name="ProgressBar" IsIndeterminate="True" Visibility="Hidden" Height="3" />
-        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="3*" MaxWidth="350" MinWidth="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"  />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+
+
+        <Viewbox Grid.Row="1" Grid.Column="1" Margin="4">
+            <Canvas Width="24" Height="24">
+                <Path Data="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" 
+					  Fill="{Binding ElementName=NameTextBox, Path=BorderBrush}" />
+            </Canvas>
+        </Viewbox>
+        <TextBox  Margin="4" wpf:TextFieldAssist.Hint="Name" Name="NameTextBox" 
+                  Grid.Row="1" Grid.Column="2"  >
+            <TextBox.Text>
+                <Binding Path="Pseudo" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        
+        <PasswordBox  Margin="4,15,4,4" Grid.Row="2" Grid.Column="2" wpf:TextFieldAssist.Hint="Password" Name="PasswordBox" />
+        
+        <Button Margin="4,15,4,4" Grid.Row="3" Grid.Column="2" Click="Login">Login</Button>
+        <ProgressBar Grid.ColumnSpan="3" Grid.Row="4" Grid.Column="0" Name="ProgressBar" IsIndeterminate="True" Visibility="Hidden" Height="3" />
+
     </Grid>
 </Page>

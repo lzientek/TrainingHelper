@@ -114,6 +114,9 @@
     </ApplicationDefinition>
     <Compile Include="Common\ApplicationHelper.cs" />
     <Compile Include="Common\BootStrapper.cs" />
+    <Compile Include="Common\Converter\BorderToRoundConverter.cs" />
+    <Compile Include="Common\Converter\PathToImageConverter.cs" />
+    <Compile Include="Common\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Model\HamMenuItem.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ConnectionViewModel.cs" />
@@ -203,6 +206,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -210,6 +216,7 @@
       <DependentUpon>Database.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="icon.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">

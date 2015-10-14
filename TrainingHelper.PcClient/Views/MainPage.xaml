@@ -22,6 +22,27 @@
                         <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
                                   HorizontalAlignment="Right" Margin="16"
                                   IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                        
+                        <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image  Height="30" Width="30" Source="{Binding Path=ConnectedUser.PhotoPath,Converter={StaticResource PathToImage},ConverterParameter='/Assets/user.png'}" Margin="7,0,10,0">
+                                    <Image.OpacityMask>
+                                        <VisualBrush>
+                                            <VisualBrush.Visual>
+                                                <Border Height="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType=Image,AncestorLevel=1},Path=Height}"
+                                                        Width="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType=Image,AncestorLevel=1},Path=Width}" 
+                                                        Background="Black" Name="BorderRoundMask" 
+                                                        CornerRadius="50" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Image.OpacityMask>
+                                </Image>
+                                <TextBlock VerticalAlignment="Center" Grid.Column="1" Text="{Binding ConnectedUser.DisplayName}" />
+                            </Grid>
+                        
                         <ListBox x:Name="HamMenuItemsListBox" Margin="0 16 0 16" SelectedIndex="0"                         
                              PreviewMouseLeftButtonUp="UIElement_OnPreviewMouseLeftButtonUp">
                             <ListBox.ItemTemplate>
