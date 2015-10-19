@@ -16,6 +16,7 @@ namespace TrainingHelper.PcClient.ViewModel
             set
             {
                 _connectedUser = value;
+                ApplicationHelper.ActualUserId = value.Id;
                 RaisePropertyChanged();
             }
         }

@@ -37,6 +37,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exercises\ShortExercise.cs" />
+    <Compile Include="Exercises\Exercise.cs" />
+    <Compile Include="Exercises\MadeExercisesShort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\ConnectionUser.cs" />
     <Compile Include="User\CreateUser.cs" />

@@ -19,5 +19,7 @@ namespace TrainingHelper.PcClient
 
         }
 
+        public static int ActualUserId { get; set; }
+
     }
 }

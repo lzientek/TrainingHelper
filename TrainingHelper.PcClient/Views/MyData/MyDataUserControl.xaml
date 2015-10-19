@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="TrainingHelper.PcClient.Views.MyData.MyDataUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TrainingHelper.PcClient.Views.MyData"
+             xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             mc:Ignorable="d" 
+             DataContext="{Binding Source={StaticResource Locator},Path=MyData}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <DataGrid ItemsSource="{Binding MadeExercises}" CanUserSortColumns="True" 
+              AutoGenerateColumns="False"
+              CanUserAddRows="False" CanUserDeleteRows="True">
+        <DataGrid.Columns>
+            <wpf:MaterialDataGridTextColumn Header="Id" Binding="{Binding Id}" />
+            <wpf:MaterialDataGridTextColumn Header="Exercise" Binding="{Binding Exercise.Name}" />
+            <wpf:MaterialDataGridTextColumn Header="Date" Binding="{Binding Date}" />
+            <wpf:MaterialDataGridTextColumn Header="Series" Binding="{Binding NbSeries}" />
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

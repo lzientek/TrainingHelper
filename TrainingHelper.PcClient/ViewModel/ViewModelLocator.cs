@@ -33,12 +33,15 @@ namespace TrainingHelper.PcClient.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<ConnectionViewModel>();
+            SimpleIoc.Default.Register<MyDataViewModel>();
             Connection.UserConnection += Main.UserConnection;
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
 
         public ConnectionViewModel Connection => ServiceLocator.Current.GetInstance<ConnectionViewModel>();
+
+        public MyDataViewModel MyData => ServiceLocator.Current.GetInstance<MyDataViewModel>();
 
         public static void Cleanup()
         {

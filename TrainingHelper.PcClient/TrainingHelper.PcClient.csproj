@@ -120,10 +120,14 @@
     <Compile Include="Model\HamMenuItem.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ConnectionViewModel.cs" />
+    <Compile Include="ViewModel\MyDataViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyData\MyDataUserControl.xaml.cs">
+      <DependentUpon>MyDataUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\ConnectionPage.xaml.cs">
       <DependentUpon>ConnectionPage.xaml</DependentUpon>
@@ -147,6 +151,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyData\MyDataUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

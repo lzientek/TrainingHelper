@@ -42,6 +42,16 @@ namespace TrainingHelper.Core.ModelConverter
             };
         }
 
+        public static SmallUser ToSmallUser(this User user)
+        {
+            return new SmallUser()
+            {
+                Pseudo = user.Pseudo,
+                Id = user.Id,
+
+            };
+        }
+
         public static IEnumerable<UserInfos> ToUserInfos(this ICollection<UserInfo> usrInfo)
         {
             return usrInfo.Select(info => new UserInfos()
