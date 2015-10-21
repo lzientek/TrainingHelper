@@ -10,12 +10,23 @@ using System.Windows.Data;
 
 namespace TrainingHelper.PcClient.Common.Converter
 {
-    public class BorderToRoundConverter:IValueConverter
+    public class MaxLengthConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Border border = (Border) value;
-            return new CornerRadius(border.ActualWidth/2);
+            if (value == null)
+            {
+                return value;
+            }
+            string v = value.ToString();
+            int length;
+            int.TryParse(parameter.ToString(), out length);
+            if (v.Length <= length
+                || length <= 3)
+            {
+                return v;
+            }
+            return $"{v.Substring(0, length - 3)}...";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

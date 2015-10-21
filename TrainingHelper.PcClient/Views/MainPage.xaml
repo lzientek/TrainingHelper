@@ -9,6 +9,7 @@
       xmlns:model="clr-namespace:TrainingHelper.PcClient.Model"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:myData="clr-namespace:TrainingHelper.PcClient.Views.MyData"
+      xmlns:exercices="clr-namespace:TrainingHelper.PcClient.Views.Exercices"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       DataContext="{Binding Source={StaticResource Locator},Path=Main}">
@@ -73,7 +74,7 @@
                             </model:HamMenuItem>
                             <model:HamMenuItem Title="Exercices">
                                 <model:HamMenuItem.Content>
-                                    <user:FullUserUserControl/>
+                                    <exercices:ExercisesOverviewUserControl/>
                                 </model:HamMenuItem.Content>
                             </model:HamMenuItem>
                         </ListBox>

@@ -25,8 +25,8 @@ namespace TrainingHelper.Core.DbConnection
         public string Name { get; set; }
         public string Description { get; set; }
         public string PhotoPath { get; set; }
-        public System.DateTime ModificationDate { get; set; }
-        public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<System.DateTime> ModificationDate { get; set; }
+        public System.DateTime CreationDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MadeExercises> MadeExercises { get; set; }

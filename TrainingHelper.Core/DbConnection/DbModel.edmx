@@ -51,8 +51,8 @@
           <Property Name="Name" Type="nvarchar" MaxLength="120" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="PhotoPath" Type="nvarchar" MaxLength="200" />
-          <Property Name="ModificationDate" Type="datetime" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="TrainingProgram">
           <Key>
@@ -540,8 +540,8 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhotoPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ModificationDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" Nullable="false" />
           <NavigationProperty Name="MadeExercises" Relationship="DatabaseModel.FK_MadeExercises_ToExercice" FromRole="TrainingExercise" ToRole="MadeExercises" />
           <NavigationProperty Name="TrainingProgramToExercise" Relationship="DatabaseModel.FK_TrainingProgramToExercise_ToExercise" FromRole="TrainingExercise" ToRole="TrainingProgramToExercise" />
         </EntityType>

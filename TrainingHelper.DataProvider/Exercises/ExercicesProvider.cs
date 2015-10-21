@@ -33,6 +33,12 @@ namespace TrainingHelper.DataProvider.Exercises
             return list.ToMadeExercisesShort();
         }
 
+        public async Task<IEnumerable<FullExerciseNL>> GetAllExercises()
+        {
+            var list = await _db.TrainingExercise.ToListAsync();
+            return list.ToFullExercises();
+        }
+
         #endregion
 
 

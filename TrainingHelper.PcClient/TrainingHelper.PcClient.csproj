@@ -114,15 +114,19 @@
     </ApplicationDefinition>
     <Compile Include="Common\ApplicationHelper.cs" />
     <Compile Include="Common\BootStrapper.cs" />
-    <Compile Include="Common\Converter\BorderToRoundConverter.cs" />
+    <Compile Include="Common\Converter\MaxLengthConverter.cs" />
     <Compile Include="Common\Converter\PathToImageConverter.cs" />
     <Compile Include="Common\ValidationRules\NotEmptyValidationRule.cs" />
     <Compile Include="Model\HamMenuItem.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ConnectionViewModel.cs" />
+    <Compile Include="ViewModel\ExercisesViewModel.cs" />
     <Compile Include="ViewModel\MyDataViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\Exercices\ExercisesOverviewUserControl.xaml.cs">
+      <DependentUpon>ExercisesOverviewUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -150,6 +154,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Exercices\ExercisesOverviewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -217,6 +225,7 @@
     <Resource Include="Assets\user.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\exercise.png" />
     <Content Include="Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

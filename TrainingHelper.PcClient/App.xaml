@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
             <viewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True"  />
             <converter:PathToImageConverter x:Key="PathToImage"/>
-            <converter:BorderToRoundConverter x:Key="BorderToRound"/>
+            <converter:MaxLengthConverter x:Key="MaxLength"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
