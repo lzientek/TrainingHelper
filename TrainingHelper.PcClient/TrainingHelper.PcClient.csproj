@@ -120,6 +120,7 @@
     <Compile Include="Model\HamMenuItem.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ConnectionViewModel.cs" />
+    <Compile Include="ViewModel\ProgramsViewModel.cs" />
     <Compile Include="ViewModel\ExercisesViewModel.cs" />
     <Compile Include="ViewModel\MyDataViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -132,6 +133,12 @@
     </Compile>
     <Compile Include="Views\MyData\MyDataUserControl.xaml.cs">
       <DependentUpon>MyDataUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Programs\OverviewPage.xaml.cs">
+      <DependentUpon>OverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Programs\ProgramsUserControl.xaml.cs">
+      <DependentUpon>ProgramsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\ConnectionPage.xaml.cs">
       <DependentUpon>ConnectionPage.xaml</DependentUpon>
@@ -163,6 +170,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MyData\MyDataUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Programs\OverviewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Programs\ProgramsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

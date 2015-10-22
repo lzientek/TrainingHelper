@@ -115,6 +115,7 @@
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelConverter\Exercises\DatabaseToClass.cs" />
+    <Compile Include="ModelConverter\Programs\DatabaseToClass.cs" />
     <Compile Include="ModelConverter\User\Class2Database.cs" />
     <Compile Include="ModelConverter\User\Database2Class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

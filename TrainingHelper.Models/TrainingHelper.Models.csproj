@@ -42,6 +42,7 @@
     <Compile Include="Exercises\MadeExercisesShort.cs" />
     <Compile Include="Exercises\FullExerciseNL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Programs\ShortProgram.cs" />
     <Compile Include="User\ConnectionUser.cs" />
     <Compile Include="User\CreateUser.cs" />
     <Compile Include="User\SmallUser.cs" />

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exercises\ExercicesProvider.cs" />
+    <Compile Include="Programs\ExercicesProvider.cs" />
     <Compile Include="User\UserProvider.cs" />
     <Compile Include="User\AuthProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,9 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:myData="clr-namespace:TrainingHelper.PcClient.Views.MyData"
       xmlns:exercices="clr-namespace:TrainingHelper.PcClient.Views.Exercices"
+      xmlns:programs="clr-namespace:TrainingHelper.PcClient.Views.Programs"
       mc:Ignorable="d" 
+      ShowsNavigationUI="False"
       d:DesignHeight="300" d:DesignWidth="300"
       DataContext="{Binding Source={StaticResource Locator},Path=Main}">
 
@@ -67,9 +69,9 @@
                                     <myData:MyDataUserControl />
                                 </model:HamMenuItem.Content>
                             </model:HamMenuItem>
-                            <model:HamMenuItem Title="Trainings">
+                            <model:HamMenuItem Title="Programs">
                                 <model:HamMenuItem.Content>
-                                    <user:FullUserUserControl/>
+                                    <programs:ProgramsUserControl/>
                                 </model:HamMenuItem.Content>
                             </model:HamMenuItem>
                             <model:HamMenuItem Title="Exercices">

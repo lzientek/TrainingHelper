@@ -1,4 +1,4 @@
-﻿<Window x:Class="TrainingHelper.PcClient.MainWindow"
+﻿<NavigationWindow x:Class="TrainingHelper.PcClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,6 +9,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="Training Helper" Height="500" Width="725"
-        Icon="icon.png">
-    <Frame Name="MainFrame" NavigationUIVisibility="Hidden" Source="Views/User/ConnectionPage.xaml"></Frame>
-</Window>
+        Icon="icon.png" ShowsNavigationUI="False"
+                  Source="Views/User/ConnectionPage.xaml"
+        x:Name="MainFrame">
+</NavigationWindow>

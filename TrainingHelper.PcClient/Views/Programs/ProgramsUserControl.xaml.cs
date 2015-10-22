@@ -13,17 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TrainingHelper.PcClient
+namespace TrainingHelper.PcClient.Views.Programs
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProgramsUserControl.xaml
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class ProgramsUserControl : UserControl
     {
-        public MainWindow()
+        public ProgramsUserControl()
         {
             InitializeComponent();
-            ApplicationHelper.NavigationService = MainFrame.NavigationService;
+            App.ViewModelLocator.Programs.Navigation = Frame.NavigationService;
         }
     }
 }
