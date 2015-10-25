@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrainingHelper.Models.Exercises
 {
-    public class ShortExercise
+    public class ShortExercise: IBaseModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

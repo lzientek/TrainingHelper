@@ -1,6 +1,6 @@
 ﻿namespace TrainingHelper.Models.Programs
 {
-    public class ShortProgram
+    public class ShortProgram: IBaseModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

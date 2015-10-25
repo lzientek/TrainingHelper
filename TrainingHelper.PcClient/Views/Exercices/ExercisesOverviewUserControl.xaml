@@ -8,7 +8,16 @@
              mc:Ignorable="d" 
              DataContext="{Binding Source={StaticResource Locator},Path=Exercises}"
              d:DesignHeight="300" d:DesignWidth="300">
-    <DataGrid ItemsSource="{Binding Exercises}" CanUserSortColumns="True" 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="Auto"/>
+            <RowDefinition  Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Button Command="{Binding CreateNew}">Create New</Button>
+            <Button Command="{Binding Reload}">Refresh</Button>
+        </StackPanel>
+    <DataGrid Grid.Row="1" ItemsSource="{Binding Exercises}" CanUserSortColumns="True" 
               AutoGenerateColumns="False"
               CanUserAddRows="False" CanUserDeleteRows="True">
         <DataGrid.Columns>
@@ -26,4 +35,5 @@
             <wpf:MaterialDataGridTextColumn Header="Creation date" Binding="{Binding CreationDate}" />
         </DataGrid.Columns>
     </DataGrid>
+    </Grid>
 </UserControl>

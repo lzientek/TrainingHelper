@@ -36,8 +36,13 @@ namespace TrainingHelper.PcClient.Common.Converter
                 }
                 return img;
             }
-
-            img.UriSource = new Uri(path);
+            try
+            {
+                img.UriSource = new Uri(path);
+            }
+            catch (Exception)
+            {
+            }
 
 
             return img;

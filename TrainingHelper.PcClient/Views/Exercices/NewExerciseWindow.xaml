@@ -1,0 +1,22 @@
+﻿<Window x:Class="TrainingHelper.PcClient.Views.Exercices.NewExerciseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrainingHelper.PcClient.Views.Exercices"
+        mc:Ignorable="d"
+        DataContext="{Binding Source={StaticResource Locator},Path=Exercises.AddExercisesVm}"
+        Title="Add an Exercise" Height="450" Width="300">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Name" />
+            <TextBox Text="{Binding Exercise.Name}" />
+            <TextBlock Text="Description" />
+            <TextBox Text="{Binding Exercise.Description}" />
+            <TextBlock Text="Image" />
+            <TextBox Text="{Binding Exercise.PhotoPath}" />
+            
+            <Button Command="{Binding Add}">Add exercise</Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight;
 using TrainingHelper.DataProvider.User;
 using TrainingHelper.Models.User;
 using TrainingHelper.PcClient.Annotations;
+using TrainingHelper.PcClient.Common;
 
 namespace TrainingHelper.PcClient.ViewModel
 {
@@ -31,6 +32,7 @@ namespace TrainingHelper.PcClient.ViewModel
 
         #region Methodes
 
+        [LoadingMethod]
         public async Task<bool> ConnectUser(string password)
         {
             if (string.IsNullOrWhiteSpace(_pseudo))

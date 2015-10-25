@@ -20,7 +20,16 @@ namespace TrainingHelper.DataProvider.Exercises
         {
             _db = new DatabaseEntities();
         }
+
         #region create
+
+        public async Task<FullExerciseNL> CreateExercise(FullExerciseNL exercise)
+        {
+            var exe = exercise.ToNewTrainingExercise();
+            _db.TrainingExercise.Add(exe);
+            int i = await _db.SaveChangesAsync();
+            return exe.ToFullExercise();
+        }
 
         #endregion
 
@@ -47,5 +56,6 @@ namespace TrainingHelper.DataProvider.Exercises
             _db.Dispose();
         }
 
+        
     }
 }

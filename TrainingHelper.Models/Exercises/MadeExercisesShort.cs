@@ -7,7 +7,7 @@ using TrainingHelper.Models.User;
 
 namespace TrainingHelper.Models.Exercises
 {
-    public class MadeExercisesShort
+    public class MadeExercisesShort: IBaseModel
     {
         public int Id { get; set; }
         public ShortExercise Exercise { get; set; }

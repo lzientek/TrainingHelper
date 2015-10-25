@@ -10,6 +10,7 @@ using TrainingHelper.DataProvider.Programs;
 using TrainingHelper.Models.Exercises;
 using TrainingHelper.Models.Programs;
 using TrainingHelper.Models.User;
+using TrainingHelper.PcClient.Common;
 
 namespace TrainingHelper.PcClient.ViewModel
 {
@@ -37,7 +38,7 @@ namespace TrainingHelper.PcClient.ViewModel
         {
 
         }
-
+        [LoadingMethod]
         public async void Load()
         {
             using (var prov = new ProgramsProvider())

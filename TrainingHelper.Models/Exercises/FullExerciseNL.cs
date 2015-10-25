@@ -5,7 +5,7 @@ namespace TrainingHelper.Models.Exercises
     /// <summary>
     /// Full exercises object NL for no link
     /// </summary>
-    public class FullExerciseNL
+    public class FullExerciseNL: IBaseModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

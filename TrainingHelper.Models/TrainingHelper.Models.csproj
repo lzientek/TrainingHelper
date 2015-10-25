@@ -37,6 +37,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseModel.cs" />
     <Compile Include="Exercises\ShortExercise.cs" />
     <Compile Include="Exercises\Exercise.cs" />
     <Compile Include="Exercises\MadeExercisesShort.cs" />
