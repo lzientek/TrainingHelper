@@ -27,5 +27,14 @@ namespace TrainingHelper.Core.ModelConverter
                 NbExercises = prog.TrainingProgramToExercise.Count,
             };
         }
+
+        public static ShortProgram ToShortPrograms(this TrainingProgramToExercise trainingProgramToExercise)
+        {
+            return trainingProgramToExercise.TrainingProgram.ToShortPrograms();
+        }
+        public static IEnumerable<ShortProgram> ToShortPrograms(this IEnumerable<TrainingProgramToExercise> trainingProgramToExercise)
+        {
+            return trainingProgramToExercise.Select(ToShortPrograms);
+        }
     }
 }

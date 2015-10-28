@@ -18,7 +18,7 @@ namespace TrainingHelper.Core.ModelConverter
 
         public static IEnumerable<FullExerciseNL> ToFullExercises(this IEnumerable<TrainingExercise> dbExercises)
         {
-            return dbExercises.Select(exercise => exercise.ToFullExercise());
+            return dbExercises.Select(exercise => exercise.ToFullExerciseNL());
         }
 
         public static MadeExercisesShort ToMadeExercises(this MadeExercises dbExe)
@@ -43,7 +43,7 @@ namespace TrainingHelper.Core.ModelConverter
             };
         }
 
-        public static FullExerciseNL ToFullExercise(this TrainingExercise dbExercise)
+        public static FullExerciseNL ToFullExerciseNL(this TrainingExercise dbExercise)
         {
             return  new FullExerciseNL()
             {
@@ -53,6 +53,21 @@ namespace TrainingHelper.Core.ModelConverter
                 ModificationDate = dbExercise.ModificationDate,
                 PhotoPath = dbExercise.PhotoPath,
                 Description = dbExercise.Description
+            };
+        }
+
+        public static FullExercise ToFullExercise(this TrainingExercise dbExercise)
+        {
+            return new FullExercise()
+            {
+                Id = dbExercise.Id,
+                Name = dbExercise.Name,
+                CreationDate = dbExercise.CreationDate,
+                ModificationDate = dbExercise.ModificationDate,
+                PhotoPath = dbExercise.PhotoPath,
+                Description = dbExercise.Description,
+                MadeExercises = dbExercise.MadeExercises.ToMadeExercisesShort(),
+                Programs = dbExercise.TrainingProgramToExercise.ToShortPrograms(),
             };
         }
     }

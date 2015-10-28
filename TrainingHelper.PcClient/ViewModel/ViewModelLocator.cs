@@ -15,6 +15,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using TrainingHelper.PcClient.ViewModel.Exercises;
 
 namespace TrainingHelper.PcClient.ViewModel
 {
@@ -36,6 +37,8 @@ namespace TrainingHelper.PcClient.ViewModel
             SimpleIoc.Default.Register<MyDataViewModel>();
             SimpleIoc.Default.Register<ExercisesViewModel>();
             SimpleIoc.Default.Register<ProgramsViewModel>();
+            SimpleIoc.Default.Register<ExercisesOverviewViewModel>();
+            SimpleIoc.Default.Register<DetailsExercisesViewModel>();
             Connection.UserConnection += Main.UserConnection;
         }
 
@@ -45,6 +48,8 @@ namespace TrainingHelper.PcClient.ViewModel
 
         public MyDataViewModel MyData => ServiceLocator.Current.GetInstance<MyDataViewModel>();
         public ExercisesViewModel Exercises => ServiceLocator.Current.GetInstance<ExercisesViewModel>();
+        public ExercisesOverviewViewModel ExercisesOverview => ServiceLocator.Current.GetInstance<ExercisesOverviewViewModel>();
+        public DetailsExercisesViewModel ExerciseDetails => ServiceLocator.Current.GetInstance<DetailsExercisesViewModel>();
         public ProgramsViewModel Programs => ServiceLocator.Current.GetInstance<ProgramsViewModel>();
 
         public static void Cleanup()

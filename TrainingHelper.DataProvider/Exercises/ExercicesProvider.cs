@@ -28,7 +28,7 @@ namespace TrainingHelper.DataProvider.Exercises
             var exe = exercise.ToNewTrainingExercise();
             _db.TrainingExercise.Add(exe);
             int i = await _db.SaveChangesAsync();
-            return exe.ToFullExercise();
+            return exe.ToFullExerciseNL();
         }
 
         #endregion
@@ -48,6 +48,12 @@ namespace TrainingHelper.DataProvider.Exercises
             return list.ToFullExercises();
         }
 
+        public async Task<FullExercise> GetFullExercise(int id)
+        {
+            var exercise = await _db.TrainingExercise.FindAsync(id);
+            return exercise.ToFullExercise();
+        } 
+
         #endregion
 
 
@@ -56,6 +62,10 @@ namespace TrainingHelper.DataProvider.Exercises
             _db.Dispose();
         }
 
-        
+
+        public Task<FullExercise> SaveExercise(FullExerciseNL exercise)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

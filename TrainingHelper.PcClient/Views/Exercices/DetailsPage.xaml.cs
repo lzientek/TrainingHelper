@@ -12,17 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TrainingHelper.PcClient.ViewModel.Exercises;
 
 namespace TrainingHelper.PcClient.Views.Exercices
 {
     /// <summary>
-    /// Interaction logic for ExercisesOverviewUserControl.xaml
+    /// Interaction logic for OverviewPage.xaml
     /// </summary>
-    public partial class ExercisesOverviewUserControl : UserControl
+    public partial class DetailsPage : Page
     {
-        public ExercisesOverviewUserControl()
+        public DetailsPage(int id)
         {
             InitializeComponent();
+            (DataContext as DetailsExercisesViewModel)?.Load(id);
         }
+
     }
 }

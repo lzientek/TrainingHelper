@@ -76,7 +76,7 @@
                             </model:HamMenuItem>
                             <model:HamMenuItem Title="Exercices">
                                 <model:HamMenuItem.Content>
-                                    <exercices:ExercisesOverviewUserControl/>
+                                    <exercices:ExercisesUserControl/>
                                 </model:HamMenuItem.Content>
                             </model:HamMenuItem>
                         </ListBox>

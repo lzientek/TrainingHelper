@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using System.Windows.Navigation;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
@@ -20,62 +21,58 @@ namespace TrainingHelper.PcClient.ViewModel
 
     public class ExercisesViewModel : ViewModelBase
     {
-
-        private ObservableCollection<FullExerciseNL> _exercises;
-
-        public ObservableCollection<FullExerciseNL> Exercises
-        {
-            get
-            {
-                if (_exercises == null)
-                {
-                    Load();
-                }
-                return _exercises;
-            }
-            set
-            {
-                _exercises = value; RaisePropertyChanged();
-            }
-        }
+        private static NavigationService _navigation;
 
         public AddExercisesViewModel AddExercisesVm => new AddExercisesViewModel();
 
         public ExercisesViewModel()
         {
-            Reload = new RelayCommand(Load);
             CreateNew = new RelayCommand(OpenNewExerciseWindow);
-            Messenger.Default.Register<ObjectManipulation<FullExerciseNL>>(this,MessengerChanges);
+            GoBack = new RelayCommand(NavGoBack,NavCanGoBack);
         }
 
-
-
-
-        [LoadingMethod]
-        public async void Load()
-        {
-            using (var prov = new ExercicesProvider())
-            {
-                Exercises = new ObservableCollection<FullExerciseNL>(await prov.GetAllExercises());
-            }
-        }
+        
 
         #region Command
         public RelayCommand CreateNew { get; set; }
+        public RelayCommand GoBack { get; set; }
         private void OpenNewExerciseWindow()
         {
             var wd = new NewExerciseWindow();
             wd.Show();
         }
-        public RelayCommand Reload { get; set; }
 
         #endregion
 
-        #region Messenger methods
-        private void MessengerChanges(ObjectManipulation<FullExerciseNL> objectManipulation)
+        #region Navigation
+
+        public static NavigationService Navigation
         {
-            Exercises?.ManipulateCollection(objectManipulation);
+            get { return _navigation; }
+            set
+            {
+                _navigation = value;
+            }
         }
+
+        public static void GoToOverview()
+        {
+            Navigation.Navigate(new OverviewPage());
+        }
+        public static void GoToDetails(int id)
+        {
+            Navigation.Navigate(new DetailsPage(id));
+        }
+        private bool NavCanGoBack()
+        {
+            return Navigation != null && Navigation.CanGoBack;
+        }
+
+        private void NavGoBack()
+        {
+            Navigation?.GoBack();
+        }
+
         #endregion
 
     }
