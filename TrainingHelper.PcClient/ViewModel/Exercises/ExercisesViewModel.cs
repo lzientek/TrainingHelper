@@ -65,7 +65,7 @@ namespace TrainingHelper.PcClient.ViewModel
         }
         private bool NavCanGoBack()
         {
-            return Navigation != null && Navigation.CanGoBack;
+            return Navigation != null && Navigation.CanGoBack && Navigation.Content.GetType() != typeof(OverviewPage);
         }
 
         private void NavGoBack()

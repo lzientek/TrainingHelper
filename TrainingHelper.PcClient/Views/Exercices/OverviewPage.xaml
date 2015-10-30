@@ -39,10 +39,10 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <wpf:MaterialDataGridTextColumn Header="Exercise" Binding="{Binding Name}" />
-                <wpf:MaterialDataGridTextColumn Header="Description" Binding="{Binding Description, Converter={StaticResource MaxLength},ConverterParameter=50}" />
-                <wpf:MaterialDataGridTextColumn Header="Last Modification Date" Binding="{Binding ModificationDate}" />
-                <wpf:MaterialDataGridTextColumn Header="Creation date" Binding="{Binding CreationDate}" />
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Exercise" Binding="{Binding Name}" />
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Description" Binding="{Binding Description, Converter={StaticResource MaxLength},ConverterParameter=50}" />
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Last Modification Date" Binding="{Binding ModificationDate}" />
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Creation date" Binding="{Binding CreationDate}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

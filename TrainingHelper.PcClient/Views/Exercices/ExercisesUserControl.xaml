@@ -13,9 +13,28 @@
             <RowDefinition  Height="Auto"/>
             <RowDefinition  Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Button Command="{Binding CreateNew}">Create New</Button>
-            <Button Command="{Binding GoBack}" Content="&lt;-"></Button>
+        <StackPanel Orientation="Horizontal" >
+            <Button Command="{Binding GoBack}" Style="{StaticResource MaterialDesignFlatButton}"
+                    Margin="0 0 8 0" HorizontalAlignment="Left" ToolTip="Go back">
+                <Viewbox Width="24" Height="24">
+                    <Canvas Width="24" Height="24">
+                        <Path Data="M100.661972687318,0L147.487023041322,0 63.3680083013314,79.771056062702 285.305016205384,79.771056062702 285.305016205384,111.138052827839 63.3680083013314,111.138052827839 147.487023041322,190.909117586139 146.885170624329,191.501006013874 101.277153656556,191.501006013874 23.4035479284066,117.648421175007 0,95.4545582599676z" 
+                              Stretch="Uniform" 
+                              Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button,AncestorLevel=1}, Path=Foreground}" 
+                              Width="24" Height="24" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
+                    </Canvas>
+                </Viewbox>
+            </Button>
+            <Button Command="{Binding CreateNew}" Style="{StaticResource MaterialDesignFlatButton}"
+                    Margin="0 0 8 0" HorizontalAlignment="Left" ToolTip="Add a new exercise">
+                <Viewbox Width="19" Height="19">
+                    <Grid Width="19" Height="19">
+                        <Path Data="M19.833,0L32.5,0 32.5,19.833999 52.334,19.833999 52.334,32.500999 32.5,32.500999 32.5,52.333 19.833,52.333 19.833,32.500999 0,32.500999 0,19.833999 19.833,19.833999z"  Stretch="Uniform" 
+                              Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=Foreground}" 
+                              Width="19" Height="19" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"  />
+                    </Grid>
+                </Viewbox>
+            </Button>
         </StackPanel>
         <Frame Grid.Row="1" NavigationUIVisibility="Hidden" Name="Frame" Source="OverviewPage.xaml">
 
