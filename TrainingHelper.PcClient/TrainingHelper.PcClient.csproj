@@ -119,6 +119,8 @@
     </ApplicationDefinition>
     <Compile Include="Common\ApplicationHelper.cs" />
     <Compile Include="Common\BootStrapper.cs" />
+    <Compile Include="Common\Converter\BoolToInVisibilityConverter.cs" />
+    <Compile Include="Common\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="Common\Helpers\Manipulation.cs" />
     <Compile Include="Common\Converter\MaxLengthConverter.cs" />
     <Compile Include="Common\Converter\PathToImageConverter.cs" />

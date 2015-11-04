@@ -21,10 +21,15 @@ namespace TrainingHelper.PcClient.Views.Exercices
     /// </summary>
     public partial class DetailsPage : Page
     {
-        public DetailsPage(int id)
+        public DetailsPage(int id, bool edit = false)
         {
             InitializeComponent();
-            (DataContext as DetailsExercisesViewModel)?.Load(id);
+            var detailsExercisesViewModel = DataContext as DetailsExercisesViewModel;
+            if (detailsExercisesViewModel != null)
+            {
+                detailsExercisesViewModel.Load(id);
+                detailsExercisesViewModel.IsEditable = edit;
+            }
         }
 
     }

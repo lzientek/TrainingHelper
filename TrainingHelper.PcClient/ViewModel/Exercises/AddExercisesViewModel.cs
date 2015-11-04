@@ -39,7 +39,7 @@ namespace TrainingHelper.PcClient.ViewModel
             using (var prov = new ExercicesProvider())
             {
                 Exercise = await prov.CreateExercise(Exercise);
-                Messenger.Default.Send<ObjectManipulation<FullExerciseNL>>(new ObjectManipulation<FullExerciseNL>(Exercise, Manipulation.Create));
+                Messenger.Default.Send(new ObjectManipulation<FullExerciseNL>(Exercise, Manipulation.Create));
             }
             Close?.Invoke();
         }

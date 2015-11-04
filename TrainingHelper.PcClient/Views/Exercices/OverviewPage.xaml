@@ -10,10 +10,11 @@
       Title="OverviewPage">
     <Page.Resources>
         <ContextMenu  x:Key="RowMenu" DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
-            <MenuItem Header="Edit" Command="{Binding DataContext.ShowDetailsCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
-                      CommandParameter="{Binding Id}"/>
             <MenuItem Header="Details" Command="{Binding DataContext.ShowDetailsCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
                       CommandParameter="{Binding Id}"/>
+            <MenuItem Header="Edit" Command="{Binding DataContext.ShowEditCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"
+                      CommandParameter="{Binding Id}"/>
+            
         </ContextMenu>
         <Style x:Key="DefaultRowStyle" TargetType="{x:Type DataGridRow}">
             <Setter Property="ContextMenu" Value="{StaticResource RowMenu}" />
@@ -24,8 +25,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Command="{Binding ReloadCommand}">Refresh</Button>
-
         <DataGrid Grid.Row="1" ItemsSource="{Binding Exercises}" CanUserSortColumns="True" 
               AutoGenerateColumns="False" RowStyle="{StaticResource DefaultRowStyle}"
               CanUserAddRows="False" CanUserDeleteRows="True">

@@ -19,6 +19,14 @@ namespace TrainingHelper.Core.ModelConverter
             return exe;
         }
 
+        public static void UpdateExercise(this  TrainingExercise toUpdate,FullExerciseNL exercise)
+        {
+            toUpdate.Description = exercise.Description;
+            toUpdate.Name = exercise.Name;
+            toUpdate.PhotoPath = exercise.PhotoPath;
+            toUpdate.ModificationDate = DateTime.Now;
+        }
+
         public static TrainingExercise ToTrainingExercise(this FullExerciseNL exercise)
         {
             return new TrainingExercise()

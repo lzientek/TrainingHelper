@@ -63,6 +63,12 @@ namespace TrainingHelper.PcClient.ViewModel
         {
             Navigation.Navigate(new DetailsPage(id));
         }
+
+        public static void GoToEdit(int id)
+        {
+            Navigation.Navigate(new DetailsPage(id,true));
+        }
+
         private bool NavCanGoBack()
         {
             return Navigation != null && Navigation.CanGoBack && Navigation.Content.GetType() != typeof(OverviewPage);

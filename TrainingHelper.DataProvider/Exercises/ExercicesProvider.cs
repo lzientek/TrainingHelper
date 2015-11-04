@@ -48,14 +48,26 @@ namespace TrainingHelper.DataProvider.Exercises
             return list.ToFullExercises();
         }
 
-        public async Task<FullExercise> GetFullExercise(int id)
+        public async Task<FullExercise> GetFullExercise(int id,int actualUser)
         {
             var exercise = await _db.TrainingExercise.FindAsync(id);
+            exercise.MadeExercises = _db.MadeExercises.Where(me => me.UserId == actualUser).ToList();
             return exercise.ToFullExercise();
-        } 
+        }
 
         #endregion
 
+        #region Save
+        public async Task<FullExercise> SaveExercise(FullExerciseNL exercise)
+        {
+            var toUpdate = await _db.TrainingExercise.FindAsync(exercise.Id);
+            toUpdate.UpdateExercise(exercise);
+            int i = await _db.SaveChangesAsync();
+            return toUpdate.ToFullExercise();
+        }
+
+
+        #endregion
 
         public void Dispose()
         {
@@ -63,9 +75,6 @@ namespace TrainingHelper.DataProvider.Exercises
         }
 
 
-        public Task<FullExercise> SaveExercise(FullExerciseNL exercise)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

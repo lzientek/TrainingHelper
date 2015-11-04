@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TrainingHelper.PcClient.Views.Exercices"
       xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+      xmlns:validationRules="clr-namespace:TrainingHelper.PcClient.Common.ValidationRules"
       mc:Ignorable="d" 
       DataContext="{Binding Source={StaticResource Locator},Path=ExerciseDetails}"
       Title="OverviewPage">
@@ -12,9 +13,69 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Exercise.Name}"></TextBlock>
-        <Button Grid.Row="1" Command="{Binding GoToOverviewCommand}">Go back to overview</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.RowSpan="2" Source="{Binding Exercise.PhotoPath,Converter={StaticResource PathToImage}}" />
+        <Button ToolTip="Image" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="5" Content="Parcourir.."  Visibility="{Binding IsEditable,Converter={StaticResource BoolToVisibility}}" />
+        <TextBlock Margin="5" ToolTip="Name" Grid.Row="0" Grid.Column="1" Text="{Binding Exercise.Name}"
+                    Visibility="{Binding IsEditable,Converter={StaticResource BoolToInVisibility}}"/>
+        <TextBox Grid.Row="0" Grid.Column="1" 
+                 ToolTip="Name"
+                 Margin="5"  wpf:TextFieldAssist.Hint="Name"
+                  Visibility="{Binding IsEditable,Converter={StaticResource BoolToVisibility}}">
+            <Binding Path="Exercise.Name" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <validationRules:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"
+                   ToolTip="Description" Margin="5"
+                   Text="{Binding Exercise.Description}"
+                    Visibility="{Binding IsEditable,Converter={StaticResource BoolToInVisibility}}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Exercise.Description}" 
+                 Margin="5" ToolTip="Description"  wpf:TextFieldAssist.Hint="Description"
+                 Visibility="{Binding IsEditable,Converter={StaticResource BoolToVisibility}}" />
+
+        <Button Grid.Row="2" Grid.Column="1" Content="Edit" Margin="5"
+                Command="{Binding EditCommand}" HorizontalAlignment="Center"
+                Visibility="{Binding IsEditable,Converter={StaticResource BoolToInVisibility}}" />
+        <Button Grid.Row="2" Grid.Column="1" Content="Save" Margin="5"
+                Command="{Binding SaveCommand}" HorizontalAlignment="Center"
+                Visibility="{Binding IsEditable,Converter={StaticResource BoolToVisibility}}" />
+
+        <TextBlock Margin="7" Grid.Row="3" Grid.Column="0" Text="Programs using this exercise :"/>
+        <DataGrid Margin="7" ItemsSource="{Binding Exercise.Programs}" Grid.Row="3" Grid.Column="1"
+                  AutoGenerateColumns="False"  
+              CanUserAddRows="False" CanUserDeleteRows="True">
+            <DataGrid.Columns>
+                <DataGridHyperlinkColumn Header="Id" IsReadOnly="True" ContentBinding="{Binding Id}"></DataGridHyperlinkColumn>
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Name" Binding="{Binding Name}"/>
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Number of users" Binding="{Binding NbUser}"/>
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Number of exercises" Binding="{Binding NbExercises}"/>
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True"  Header="Difficulty" Binding="{Binding Difficulty}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <TextBlock Margin="7" Grid.Row="4" Grid.Column="0" Text="Your Made exercises :"/>
+        <DataGrid Margin="7" ItemsSource="{Binding Exercise.MadeExercises}" 
+                  Grid.Row="4" Grid.Column="1" 
+                  AutoGenerateColumns="False"  
+              CanUserAddRows="False" CanUserDeleteRows="True">
+            <DataGrid.Columns>
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Id" Binding="{Binding Id}" />
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Date" Binding="{Binding Date}" />
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Numbers of series" Binding="{Binding NbSeries}" />
+                <wpf:MaterialDataGridTextColumn IsReadOnly="True" Header="Additionnal info" Binding="{Binding AdditionnalInfo,Converter={StaticResource MaxLength},ConverterParameter=40}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

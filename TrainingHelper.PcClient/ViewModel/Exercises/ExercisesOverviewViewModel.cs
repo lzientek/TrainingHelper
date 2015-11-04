@@ -31,14 +31,15 @@ namespace TrainingHelper.PcClient.ViewModel
         }
         public RelayCommand ReloadCommand { get; set; }
         public RelayCommand<int> ShowDetailsCommand { get; set; }
+        public RelayCommand<int> ShowEditCommand { get; set; }
 
         public ExercisesOverviewViewModel()
         {
             Messenger.Default.Register<ObjectManipulation<FullExerciseNL>>(this, MessengerChanges);
             ReloadCommand = new RelayCommand(Load);
             ShowDetailsCommand = new RelayCommand<int>(ExercisesViewModel.GoToDetails);
+            ShowEditCommand = new RelayCommand<int>(ExercisesViewModel.GoToEdit);
         }
-
 
         [LoadingMethod]
         public async void Load()
