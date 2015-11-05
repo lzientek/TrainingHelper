@@ -14,11 +14,10 @@
               CanUserAddRows="False" CanUserDeleteRows="True">
         <DataGrid.Columns>
             <wpf:MaterialDataGridTextColumn Header="Id" Binding="{Binding Id}" IsReadOnly="True" />
-
-            <wpf:MaterialDataGridTextColumn Header="Exercise" Binding="{Binding Name}" />
+            <wpf:MaterialDataGridTextColumn Header="Name" Binding="{Binding Name}"  />
             <wpf:MaterialDataGridTextColumn Header="Difficulty" Binding="{Binding Difficulty}" />
-            <wpf:MaterialDataGridTextColumn Header="Number of exercises" Binding="{Binding NbExercises}" />
-            <wpf:MaterialDataGridTextColumn Header="Number of Users" Binding="{Binding NbUser}" />
+            <wpf:MaterialDataGridTextColumn Header="Number of exercises" Binding="{Binding NbExercises}" IsReadOnly="True" />
+            <wpf:MaterialDataGridTextColumn Header="Number of Users" Binding="{Binding NbUser}" IsReadOnly="True"/>
         </DataGrid.Columns>
     </DataGrid>
 </Page>
