@@ -121,6 +121,8 @@
     <Compile Include="Common\BootStrapper.cs" />
     <Compile Include="Common\Converter\BoolToInVisibilityConverter.cs" />
     <Compile Include="Common\Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Common\Converter\StringToUri.cs" />
+    <Compile Include="Common\Helpers\HyperlinkExtensions.cs" />
     <Compile Include="Common\Helpers\Manipulation.cs" />
     <Compile Include="Common\Converter\MaxLengthConverter.cs" />
     <Compile Include="Common\Converter\PathToImageConverter.cs" />
@@ -134,6 +136,7 @@
     <Compile Include="ViewModel\Exercises\AddExercisesViewModel.cs" />
     <Compile Include="ViewModel\Exercises\ExercisesOverviewViewModel.cs" />
     <Compile Include="ViewModel\Exercises\DetailsExercisesViewModel.cs" />
+    <Compile Include="ViewModel\ParametersViewModel.cs" />
     <Compile Include="ViewModel\ProgramsViewModel.cs" />
     <Compile Include="ViewModel\Exercises\ExercisesViewModel.cs" />
     <Compile Include="ViewModel\MyDataViewModel.cs" />
@@ -156,6 +159,9 @@
     </Compile>
     <Compile Include="Views\MyData\MyDataUserControl.xaml.cs">
       <DependentUpon>MyDataUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parameters\ParametersUserControl.xaml.cs">
+      <DependentUpon>ParametersUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Programs\OverviewPage.xaml.cs">
       <DependentUpon>OverviewPage.xaml</DependentUpon>
@@ -209,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MyData\MyDataUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parameters\ParametersUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

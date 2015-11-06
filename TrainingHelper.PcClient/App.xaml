@@ -23,6 +23,7 @@
             <converter:MaxLengthConverter x:Key="MaxLength"/>
             <converter:BoolToInVisibilityConverter x:Key="BoolToInVisibility" />
             <converter:BoolToVisibilityConverter x:Key="BoolToVisibility" />
+            <converter:StringToUri x:Key="StringToUri" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

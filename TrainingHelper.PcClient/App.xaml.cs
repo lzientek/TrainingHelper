@@ -18,7 +18,7 @@ namespace TrainingHelper.PcClient
     public partial class App : Application
     {
         public static Server ApiServer { get; set; }
-        public static ViewModelLocator ViewModelLocator =>(ViewModelLocator) Current.Resources["Locator"];
+        public static ViewModelLocator ViewModelLocator => (ViewModelLocator)Current.Resources["Locator"];
 
         public App()
         {
@@ -27,7 +27,20 @@ namespace TrainingHelper.PcClient
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            ApiServer = Server.Launch("http://localhost", 8888);
+            try
+            {
+                ApiServer = Server.Launch("http://localhost", 8888);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    string.Format("{0}{1}{2}{3}", 
+                    ex.Message, 
+                    ex.StackTrace, 
+                    ex.InnerException?.Message??string.Empty, 
+                    ex.InnerException?.StackTrace??string.Empty), "Unexpected Error");
+            }
+
 
         }
     }

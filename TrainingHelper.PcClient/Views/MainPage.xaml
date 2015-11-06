@@ -11,6 +11,7 @@
       xmlns:myData="clr-namespace:TrainingHelper.PcClient.Views.MyData"
       xmlns:exercices="clr-namespace:TrainingHelper.PcClient.Views.Exercices"
       xmlns:programs="clr-namespace:TrainingHelper.PcClient.Views.Programs"
+      xmlns:parameters="clr-namespace:TrainingHelper.PcClient.Views.Parameters"
       mc:Ignorable="d" 
       ShowsNavigationUI="False"
       d:DesignHeight="300" d:DesignWidth="300"
@@ -79,7 +80,16 @@
                                     <exercices:ExercisesUserControl/>
                                 </model:HamMenuItem.Content>
                             </model:HamMenuItem>
+
+                            <model:HamMenuItem Title="Parameters">
+                                <model:HamMenuItem.Content>
+                                    <parameters:ParametersUserControl/>
+                                </model:HamMenuItem.Content>
+                            </model:HamMenuItem>
+
                         </ListBox>
+                  
+                    
                     </StackPanel>
                 </wpf:DrawerHost.LeftDrawerContent>
 

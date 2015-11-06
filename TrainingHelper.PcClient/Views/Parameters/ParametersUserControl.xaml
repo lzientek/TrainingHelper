@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="TrainingHelper.PcClient.Views.Parameters.ParametersUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TrainingHelper.PcClient.Views.Parameters"
+             xmlns:helpers="clr-namespace:TrainingHelper.PcClient.Common.Helpers"
+             mc:Ignorable="d" DataContext="{Binding Source={StaticResource Locator},Path=Parameters}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Server Paths" />
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding ServerPath}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>
